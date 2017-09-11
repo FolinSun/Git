@@ -32,12 +32,12 @@ $ git init
     * 使用命令`git add <file>`。告诉Git把文件添加到暂存区(Staged)。注意，此命令可反复多次使用，添加多个文件；`<file>` → 指定的某个文件。
     * 使用命令`git commit`，告诉Git把文件提交到仓库区(相当于版本库分支master)。`-m "changes log"` → 本次提交的说明  使用完整命令`git commit -m "changes log"`
     
-    ````javascript
-    $ git add [file1] [file2]        //添加指定文件到暂存区(Staged)
-    $ git add .                      //添加当前目录的所有文件到暂存区(Staged)
-    $ git add -u                     //添加修改和删除，但是不包括新建文件
-    $ git commit -m "add 3 files."   //提交暂存区(Staged)到仓库区(版本库分支master)
-    ````
+````javascript
+$ git add [file1] [file2]        //添加指定文件到暂存区(Staged)
+$ git add .                      //添加当前目录的所有文件到暂存区(Staged)
+$ git add -u                     //添加修改和删除，但是不包括新建文件
+$ git commit -m "add 3 files."   //提交暂存区(Staged)到仓库区(版本库分支master)
+````
     
 备注：每次修改，如果不add到暂存区，那就不会加入到commit中。
 
@@ -46,10 +46,12 @@ $ git init
 - 如果`git status`告诉你有文件被修改过，用`git diff <file>`可以查看修改内容。`<file>` → 指定的某个文件。
     * `git diff`,   查看暂存区(Staged)和工作区(本地文件)的差别。  
     * `git diff --cached` 或者 `git diff --staged` ,   查看暂存区(Staged)和最新commit的差别
-    * `git diff HEAD`  查看工作区(本地文件)与当前分支最新commit之间的差别
+    * `git diff HEAD`  查看工作区(本地文件)与当前分支最新commit之间的差别    
     
-    ````javascript
-    $ git diff [file]           //显示暂存区和工作区的差异
-    $ git diff --cached [file]  //显示暂存区和上一个commit的差异
-    $ git diff HEAD             //显示工作区与当前分支最新commit之间的差异
-    ````
+````javascript
+$ git diff [file]           //显示暂存区和工作区的差异
+$ git diff --cached [file]  //显示暂存区和上一个commit的差异
+$ git diff HEAD             //显示工作区与当前分支最新commit之间的差异
+````
+
+# aaaa
