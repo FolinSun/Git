@@ -50,7 +50,7 @@ $ git commit -m "add 3 files."   //提交暂存区(Staged)到仓库区(版本库
     
 ````javascript
 $ git diff [file]           //显示暂存区和工作区的差别
-$ git diff --cached [file]  //显示暂存区和当前分支最新commit的差别
+$ git diff --cached [file]  //显示暂存区和当前分支最新commit的差别 → (commit 之后暂存区是空的)
 $ git diff HEAD             //显示工作区与当前分支最新commit的差别
 ````
 
@@ -74,5 +74,6 @@ $ git log --pretty=oneline  //简化版历史信息
 ````javascript
 $ git reset --hard HEAD           //放弃工作目录下的所有修改
 $ git reset --hard [commit_id]    //将HEAD重置到指定的版本，并抛弃该版本之后的所有修改
+$ git reflog                      //显示当前分支的最近几次提交
 ````
 
