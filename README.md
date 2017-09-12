@@ -253,3 +253,11 @@ $ git show [tag]             //查看tag信息
 - 使用命令`git push origin <tagname>`推送某个标签到远程。
 - 使用命令`git push origin --tags`一次性推送全部尚未推送到远程的本地标签。
 - 如果标签已经推送到远程，要删除远程标签需先执行`git tag -d <tagname>`删除本地标签，再执行`git push origin :refs/tags/<tagname>`或者`git push origin --delete tag <tagname>`从远程删除。
+
+````javascript
+$ git tag -d <tagname>          //删除一个本地标签
+$ git push origin <tagname>     //推送某个标签到远程
+$ git push origin --tags        //将未推送过的本地标签全部推送到远程
+$ git push origin :refs/tags/<tagname>    //比远程删除标签
+$ git push origin --delete tag <tagname>  //比远程删除标签
+````
