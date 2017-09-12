@@ -201,3 +201,11 @@ $ git merge --no-ff <name>
 - 使用命令`git stash apply stash@{0}`恢复指定的stash。
 - 使用命令`git stash drop`来删除stash内容。
 - 使用命令`git stash pop`恢复隐藏工作现场的同时把stash内容也删了。
+
+````javascript
+$ git stash list
+$ git stash apply
+$ git stash drop
+$ git stash pop               
+$ git stash apply stash@{0}   
+````
