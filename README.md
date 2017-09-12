@@ -143,3 +143,15 @@ $ git clone https://github.com/xxx/xxx              // HTTPS
 
 
 # 分支管理
+#### git 的分支整体预览图如下:
+![git-model](img/git-model.png)
+##### 从上图可以看到主要包含下面几个分支：
+- master： 主分支，提供给用户使用的正式版本。
+- develop： 日常开发分支，该分支正常保存了开发的最新代码。
+- feature： 具体的功能开发分支，从Develop分支上面分出来的。开发完成后，要再并入Develop。
+- release： 预发布分支，它是指发布正式版本之前（即合并到Master分支之前），我们可能需要有一个预发布的版本进行测试。比如说某一期的功能全部开发完成，那么就将 develop 分支合并到 release 分支，测试没有问题并且到了发布日期就合并到 master 分支，进行发布。记得预发布结束以后，还需要合并进Develop分支。它的命名，可以采用release-*的形式。
+- hotfix： 修补bug分支。软件正式发布以后，难免会出现bug。这时就需要创建一个分支，进行bug修补。
+
+##### 这里顺便推荐两个关于分支解说的文章:
+###### [Git 最佳实践：分支管理](http://blog.jobbole.com/109466/) 
+###### [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
