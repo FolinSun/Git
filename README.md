@@ -152,6 +152,9 @@ $ git clone https://github.com/xxx/xxx              // HTTPS
 - release： 预发布分支，它是指发布正式版本之前（即合并到Master分支之前），我们可能需要有一个预发布的版本进行测试。比如说某一期的功能全部开发完成，那么就将 develop 分支合并到 release 分支，测试没有问题并且到了发布日期就合并到 master 分支，进行发布。记得预发布结束以后，还需要合并进Develop分支。它的命名，可以采用release-*的形式。
 - hotfix： 修补bug分支。软件正式发布以后，难免会出现bug。这时就需要创建一个分支，进行bug修补。
 
+###### 备注：除开`master`和`develop`分支外，其他临时性分支，一般使用完，应该删除抛弃，代码库的常设分支始终只有`master`和`develop`。
+
+
 ##### 这里顺便推荐两个关于分支解说的文章:
 ###### [Git 最佳实践：分支管理](http://blog.jobbole.com/109466/) 
 ###### [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
@@ -163,18 +166,22 @@ $ git clone https://github.com/xxx/xxx              // HTTPS
 - 使用命令`git branch <name>`可以查看当前分支，并且会列出所有分支，当前分支前面会标一个*号。   
 - 使用命令`git branch -d <name>`合并指定分支到当前分支。
 - 使用命令`git merge <name>`删除指定分支。
+- 如果要丢弃一个没有被合并过的分支，使用命令`git branch -D <name>`强行删除。
 
-##### 总结时间：
-- 查看分支：`git branch`
-- 创建分支：`git branch <name>`
-- 切换分支：`git checkout <name>` 
-- 创建+切换分支：`git checkout -b <name>`
-- 合并某分支到当前分支：`git merge <name>`
-- 删除分支：`git branch -d <name>` 
+````javascript
+$ git branch                       //查看分支
+$ git branch <name>                //创建分支
+$ git checkout <name>              //切换分支
+$ git checkout -b <name>           //创建+切换分支
+$ git merge <name>                 //合并某分支到当前分支
+$ git branch -d <name>             //删除分支
+$ git branch -D <name>             //强行删除分支
+````
 
 ### 解决冲突    
 - 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
 - 使用命令`git log --graph`会在各个提交之间打印出线条，这些线条可以展示出分支之间的关系。
+
 ````javascript
 $ git log --graph   //可以看到分支合并图
 ````
@@ -182,6 +189,15 @@ $ git log --graph   //可以看到分支合并图
 ### 分支管理策略
 ##### 通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
 - 合并分支时，加上`--no-ff`参数，表示禁用`fast forward`
+
 ````javascript
 $ git merge --no-ff <name>
 ````
+
+##### 软件开发中，bug就像家常便饭一样。有了bug就需要修复，在Git中，由于分支是如此的强大，所以，每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。
+##### 当前情景是你接到一个线上要修复的bug，但是当前正在develop上进行的工作还没有办法提交。而bug优先级又比较高，不能等待开发完成后来修复。这时候你可以使用命令`git stash`把当前工作现场"储藏"起来，然后去修复bug，修复后再使用命令`git stash pop`恢复现场继续工作。修复bug之后切记把代码合并进`develop`里。
+- 使用命令`git stash list`查看工作现场隐藏在那个区域。
+- 使用命令`git stash apply`恢复隐藏的工作现场。（但是恢复后，stash内容并不删除）。
+- 使用命令`git stash apply stash@{0}`恢复指定的stash。
+- 使用命令`git stash drop`来删除stash内容。
+- 使用命令`git stash pop`恢复隐藏工作现场的同时把stash内容也删了。
