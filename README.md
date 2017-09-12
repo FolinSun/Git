@@ -225,3 +225,31 @@ $ git stash apply stash@{0}
     * 建立本地分支和远程分支的关联，使用`git branch --set-upstream <branch-name - 本地分支> <origin/branch-name - 远程分支>`；
     * 同上`git branch --set-upstream-to <origin/branch-name - 远程分支> <branch-name - 本地分支>` , `git branch --track <branch-name - 本地分支> <origin/branch-name - 远程分支>`
     * 从远程抓取分支，使用`git pull`，如果有冲突，要先处理冲突。
+
+
+# 标签管理
+###### 发布一个版本时，我们通常先在版本库中打一个标签（tag），这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。所以标签的意思是：
+* "我要找commit id是892b892a3f7...的那个版本"
+* "一串乱七八糟的数字怎么找？"
+* "我要找的commit id是打了tag 'v1.1'的那个版本"
+* "找到了：git show v1.1"
+
+### 创建标签  
+- 使用命令`git tag <name>`新建一个标签，默认新建在最新提交的commit上，当然也可以指定一个commit_id。
+- 使用命令`git tag`可以查看所有标签。
+- 使用命令`git show <tagname>`查看标签信息。
+- 使用命令`git tag -a <name> -m "txt..."`创建带有说明的标签，`-a`指定标签名，`-m`指定说明文字。
+
+````javascript
+$ git tag                    //列出所有tag
+$ git tag [tag]              //新建一个tag在当前commit
+$ git tag [tag] [commit]     //新建一个tag在指定commit
+$ git tag -a [tag] -m "txt"  //新建一个tag在当前commit上并附加说明信息消息 
+$ git show [tag]             //查看tag信息
+````
+
+### 操作标签
+- 使用命令`git tag -d <tagname>`可以删除一个本地标签。
+- 使用命令`git push origin <tagname>`推送某个标签到远程。
+- 使用命令`git push origin --tags`一次性推送全部尚未推送到远程的本地标签。
+- 如果标签已经推送到远程，要删除远程标签需先执行`git tag -d <tagname>`删除本地标签，再执行`git push origin :refs/tags/<tagname>`或者`git push origin --delete tag <tagname>`从远程删除。
