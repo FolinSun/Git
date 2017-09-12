@@ -156,7 +156,7 @@ $ git clone https://github.com/xxx/xxx              // HTTPS
 
 
 ##### 这里顺便推荐两个关于分支解说的文章:
-###### [Git 最佳实践：分支管理](http://blog.jobbole.com/109466/) 
+###### [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 ###### [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 
 ### 创建与合并分支
@@ -261,3 +261,8 @@ $ git push origin --tags        //将未推送过的本地标签全部推送到�
 $ git push origin :refs/tags/<tagname>    //比远程删除标签
 $ git push origin --delete tag <tagname>  //比远程删除标签
 ````
+
+# 关于GitHub总结时间 
+- 在GitHub上，可以任意Fork开源仓库。
+- 自己拥有Fork后的仓库的读写权限。
+- 可以推送pull request给官方仓库来贡献代码。
