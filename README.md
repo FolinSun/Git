@@ -143,7 +143,7 @@ $ git clone https://github.com/xxx/xxx              // HTTPS
 
 
 # 分支管理
-#### git 的分支整体预览图如下:
+### git 的分支整体预览图如下:
 ![git-model](img/git-model.png)
 ##### 从上图可以看到主要包含下面几个分支：
 - master： 主分支，提供给用户使用的正式版本。
@@ -155,3 +155,10 @@ $ git clone https://github.com/xxx/xxx              // HTTPS
 ##### 这里顺便推荐两个关于分支解说的文章:
 ###### [Git 最佳实践：分支管理](http://blog.jobbole.com/109466/) 
 ###### [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
+
+### 创建与合并分支
+- 使用命令`git checkout -b <name>`创建一个分支，然后切换到该分支。`git checkout`命令加上`-b`参数表示创建并切换，相当于以下两条命令：
+    * `git branch <name>`
+    * `git checkout <name>`  
+- 使用命令`git branch`可以查看当前分支，并且会列出所有分支，当前分支前面会标一个*号。    
+- `git merge <name>`命令用于合并指定分支到当前分支。
