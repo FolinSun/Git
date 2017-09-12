@@ -104,3 +104,22 @@ $ git reflog                      //显示当前分支的最近几次提交
 - 另一种情况是误删了，但还没来得及执行`git rm <file>`命令，那就执行`git checkout -- <file>`可以把版本库的东西重新写回工作区。
 - 但是如果你已经执行`git rm <file>`命令了，这时候执行`git status`会看到"Changes to be committed"，代表就连工作区的该文件也删除了。这个命令相当于同时执行了`删除文件`，`git add <file>`。如果想恢复该文件，可以参考[撤销修改](#撤销修改)一节。
 
+# 添加远程仓库
+###### 现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。
+- 登录进你的GitHub，然后找到"New"按钮，创建一个新的仓库。
+![one](img/img-2.png)
+- 根据你的项目进行相对应的填写。勾选是否要初始化README文件。最后点击"Create repository"按钮确定，就成功地创建了一个新的Git远程仓库。
+![two](img/img-3.png)
+
+###### 目前这个远程仓库还是空的。GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。根据提示使用命令`git remote add [shortname] [url]`关联远程仓库。添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。
+````javascript
+$ git remote add origin https://github.com/xxx/xxx                // HTTPS
+$ git remote add origin git@server-name:<path/repo-name.git>      // SSH 
+````
+备注：有关https跟ssh提交的区别可[查看链接](https://help.github.com/articles/which-remote-url-should-i-use/);
+
+###### 关联后，使用命令`git push`把本地库的内容推送到远程，实际上是把当前分支master推送到远程。
+````javascript
+$ git push -u origin master 
+````
+备注：由于远程库是空的，我们第一次推送master分支时，加上了`-u`参数，Git不但会把本地master分支内容推送到远程新master分支，还会把本地master分支和远程master分支关联起来，在以后的推送或者拉取时就可以直接简化命令。
