@@ -1,0 +1,69 @@
+Git 常用命令
+
+git add .     添加当前目录的所有文件到暂存区
+git add [file name]     添加一个文件到暂存区
+
+git commit     提交
+git commit -a     提交工作区自上次commit之后的变化，直接到仓库区，相当于执行了两个命令add加commit
+git commit -v     提交时显示所有diff信息
+git commit -m "init"     提交并且添加commit注释信息
+
+git status     查看当前状态
+
+git log     显示当前分支的版本历史
+
+git diff     显示暂存区和工作区的差异
+git diff --cached 或 git diff --staged      查看暂存区(Staged)和当前分支最新commit之间的差别
+
+git stash     把当前工作现场"储藏"起来
+git stash list     查看工作现场隐藏在那个区域
+git stash pop     恢复隐藏工作现场的同时把stash内容也删了
+
+
+git branch      查看本地所有分支
+git branch -a      查看所有的分支
+git branch -r      查看本地所有分支
+git branch -D master develop      强行删除本地库develop
+git branch branch_0.1 master      从主分支master创建branch_0.1分支
+git branch -m branch_0.1 branch_1.0      将branch_0.1重命名为branch_1.0
+
+git remote add origin git@192.168.1.119:ndshow      添加新的远程端
+git remote -v     显示所有远程仓库
+git remote show origin     显示远程库origin里的资源
+
+git pull     本地与服务器端同步
+
+git push -u origin master      把本地master分支内容推送到远程新master分支，并且把本地master分支和远程master分支关联起来（第一次推送时使用，后面可以不用-u）
+git push origin(远程仓库名) master(分支名)     将本地项目给推到服务器上
+git push origin master:develop     将本地master分支推送到服务器develop分支上去
+
+git merge origin/dev     将分支dev与当前分支进行合并
+
+
+git checkout dev     切换到本地dev分支
+
+git rm [file name]     移除文件，并且将这次删除放入暂存区。(相当于从暂存区和工作区中删除)
+git rm --cached [file name]      停止追踪指定文件，但该文件会保留在工作区。(相当于只比暂存区删除)
+git rm -f [file name]     强行移除修改后文件(从暂存区和工作区中删除)
+
+git fetch [file name]     下载远程仓库的所有变动到本地，但不会自动合并到HEAD中
+git clone git://github.com/schacon/grit.git     从服务器上将代码给拉下来
+git config --list     看所有用户
+git ls-files     看已经被提交的
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
