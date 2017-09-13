@@ -21,7 +21,7 @@ $ git config --global user.email "email@example.com"
 
 
 # 工作区和暂存区图解
-![git-img](img/git-img.jpg)
+![git-img](img/git-img.png)
 
 
 # 创建版本库
