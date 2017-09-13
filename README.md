@@ -266,3 +266,41 @@ $ git push origin --delete tag <tagname>  //比远程删除标签
 - 在GitHub上，可以任意Fork开源仓库。
 - 自己拥有Fork后的仓库的读写权限。
 - 可以推送pull request给官方仓库来贡献代码。
+
+# 自定义Git
+- 使用命令`git config --global color.ui true`让Git显示颜色，会让命令输出看起来更醒目。
+- 配置Git的时候，`--global`参数是全局参数，也就是这些命令在这台电脑的所有Git仓库下都有用，如果没加，那只针对当前的仓库起作用。
+- 要删除配置的别名，如果是在当前仓库的话，找到`.git/config`文件，删除相对行就可以了。如果是全局的话，去用户主目录下的找到`.gitconfig`文件，删除相对行就可以了。
+````javascript
+$ git config --global color.ui true       //配置颜色开启
+//配置别名
+$ git config --global alias.st status     //st表示status
+$ git config --global alias.co checkout   //co表示checkout
+$ git config --global alias.ci commit     //ci表示commit
+$ git config --global alias.br branch     //br表示branch
+$ git config --global alias.unstage 'reset HEAD'   //unstage相当于reset HEAD
+$ git config --global alias.last 'log -1'   //配置一个 git last 让其显示最后一次提交信息
+$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+````
+
+
+# 忽略特殊文件
+##### 有些时候，你必须把某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件啦，等等。这个问题解决起来也很简单，在Git工作区的根目录下创建一个特殊的`.gitignore`文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
+````javascript
+# 此为注释 – 将被 Git 忽略
+
+*.cs       # 忽略所有 .cs 结尾的文件
+!ABC.cs    # 但 ABC.cs 除外
+/BLL       # 仅仅忽略项目根目录下的 BLL 文件，不包括 subdir/BLL
+build/     # 忽略 build/ 目录下的所有文件
+doc/*.txt  # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+````
+
+###### 规则很简单，不做过多解释，但是有时候在项目开发过程中，突然心血来潮想把某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，原因是`.gitignore`只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改`.gitignore`是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：
+````javascript
+git rm -r --cached .
+git add .
+git commit -m 'update .gitignore'
+````
+
+最后推荐一个地址可以[自动生成 .gitignore 文件](https://www.gitignore.io/)
