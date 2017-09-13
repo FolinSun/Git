@@ -196,6 +196,7 @@ $ git merge --no-ff <name>
 
 ##### 软件开发中，bug就像家常便饭一样。有了bug就需要修复，在Git中，由于分支是如此的强大，所以，每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。
 ##### 当前情景是你接到一个线上要修复的bug，但是当前正在develop上进行的工作还没有办法提交。而bug优先级又比较高，不能等待开发完成后来修复。这时候你可以使用命令`git stash`把当前工作现场"储藏"起来，然后去修复bug，修复后再使用命令`git stash pop`恢复现场继续工作。修复bug之后切记把代码合并进`develop`里。
+- 使用命令`git stash`把当前工作现场"储藏"起来
 - 使用命令`git stash list`查看工作现场隐藏在那个区域。
 - 使用命令`git stash apply`恢复隐藏的工作现场。（但是恢复后，stash内容并不删除）。
 - 使用命令`git stash apply stash@{0}`恢复指定的stash。
@@ -203,6 +204,7 @@ $ git merge --no-ff <name>
 - 使用命令`git stash pop`恢复隐藏工作现场的同时把stash内容也删了。
 
 ````javascript
+$ git stash
 $ git stash list
 $ git stash apply
 $ git stash drop
