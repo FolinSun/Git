@@ -163,9 +163,9 @@ $ git clone https://github.com/xxx/xxx              // HTTPS
 - 使用命令`git checkout -b <name>`创建一个分支，然后切换到该分支。`git checkout`命令加上`-b`参数表示创建并切换，相当于以下两条命令：
     * `git branch <name>`
     * `git checkout <name>`  
-- 使用命令`git branch <name>`可以查看当前分支，并且会列出所有分支，当前分支前面会标一个*号。   
-- 使用命令`git branch -d <name>`合并指定分支到当前分支。
-- 使用命令`git merge <name>`删除指定分支。
+- 使用命令`git branch`可以查看当前分支，并且会列出所有分支，当前分支前面会标一个*号。   
+- 使用命令`git branch -d <name>`删除指定分支。
+- 使用命令`git merge <name>`合并指定分支到当前分支。
 - 如果要丢弃一个没有被合并过的分支，使用命令`git branch -D <name>`强行删除。
 
 ````javascript
