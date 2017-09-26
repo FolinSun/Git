@@ -43,7 +43,7 @@ git merge origin/dev     将分支dev与当前分支进行合并
 git checkout dev     切换到本地dev分支
 
 git rm [file name]     移除文件，并且将这次删除放入暂存区。(相当于从暂存区和工作区中删除)
-git rm --cached [file name]      停止追踪指定文件，但该文件会保留在工作区。(相当于只比暂存区删除)
+git rm --cached [file name]      停止追踪指定文件，但该文件会保留在工作区。(相当于只从暂存区删除)
 git rm -f [file name]     强行移除修改后文件(从暂存区和工作区中删除)
 
 git fetch [file name]     下载远程仓库的所有变动到本地，但不会自动合并到HEAD中
